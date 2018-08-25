@@ -1,34 +1,40 @@
+/*
+Christian Gerhardt, CS3335, Fall 2018
+*/
 #include <stdio.h>
 
-/*1-2 table spoons of coffee represents every 6 ounces of water. 
- *6 ounces is equal to .75 of a single US cup. The user will enter an amount of coffee the wish to have (in cups) and the program will calculate the how much coffee (grounds are needed and how many cups of water are needed) Once this is done it will display the corresponding coffee cups as images.*/
-
-
-int makeCalc(int *cups){
-	int ounces = 6;
-	float usCup = .75;
-
-	int number_of_tbls = *cups / (usCup / ounces);
-	return 	number_of_tbls;
+int makeCalc(int cups){
+	int tble_spoons = 2;
+	int number_of_tbls;
+	number_of_tbls = cups * tble_spoons;
+	return number_of_tbls;
 }
 
 main(){
-	int *cups;
-	char [] *name;
+	int cups;
+	char fi, mi, li;
 
-	puts("Please enter your first name: ");
-	scanf("%c", &name);
+
+	puts("Please enter your first initial:  ");
+	scanf("%c", &fi);
+	puts("Please enter your middle initial: ");
+	scanf(" %c", &mi);
+	puts("Please enter your last initial: ");
+	scanf(" %c", &li);
 	puts("Enter desired number of cups of Coffee: ");
-	scanf("%d", &cups);
+	scanf(" %d", &cups);
 	
-	int numCoffeeTbl = makeCalc(*cups);
+	int numCoffeeTbl = makeCalc(cups);
 	
-	printf("%c Wants %d number of cups.", &name, &cups);
-	if(&cups > 5){
-		puts("Woah! Careful, more than 5 cups can be dangerous.");
+	printf("\n%c.%c.%c  wants %d number of cups.\n", fi, mi, li, cups);
+	if(cups > 2){
+		puts("\nWoah! Careful, more than 5 cups can be dangerous.\n");
 	}
-	for(int i = 0; i <= numCoffeeTbl; i++){
-		system("Hot_Coffe_Emoji_large.png");
+	double holdCups[cups];
+	for(int i = 0; i < cups; i++){
+		holdCups[i] = 1.25;
+		printf("Cup %d will cost: %.2f\n", i+1, holdCups[i]);
 	}
+
 }
 
